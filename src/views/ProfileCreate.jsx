@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import ProfileForm from '../components/ProfileForm';
 import { ProfileProvider, useProfile } from '../context/ProfileContext';
 import { useUser } from '../context/UserContext';
@@ -21,8 +21,7 @@ export default function ProfileCreate() {
     try {
       await createProfile({ name, email, bio, birthday });
       alert('Profile created');
-
-      history.push('/profile');
+      <Redirect to="/profile" />;
     } catch {
       alert('try again');
     }

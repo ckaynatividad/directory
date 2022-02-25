@@ -6,9 +6,9 @@ export default function Home() {
   const { user } = useUser();
   return (
     <div className="Home">
-      {user?.email ? (
-        <Redirect to="/profile" />
-      ) : (
+      {user.id && <Redirect to="/profile" />}
+
+      {!user.id && (
         <>
           <h4>Huwwo</h4>
           <p>

@@ -6,16 +6,25 @@ import { getProfile } from '../services/profiles';
 export const ProfileContext = createContext();
 
 export function ProfileProvider({ children }) {
+  const [loading, setLoading] = useState(true);
   const [profile, setProfile] = useState({});
 
   useEffect(() => {
-    const fetchData = () => {
-      getProfile().then((data) => setProfile(data));
-    };
-    fetchData();
+    try {
+      const fetchData = () => {
+        getProfile().then((data) => setProfile(data));
+      };
+      fetchData();
+      setLoading(false);
+    } catch {
+      alert('error catching data');
+    }
   }, []);
 
-  const value = useMemo(() => ({ profile, setProfile }), [profile]);
+  const value = useMemo(
+    () => ({ profile, setProfile, loading, setLoading }),
+    [profile]
+  );
 
   return (
     <ProfileContext.Provider value={value}>{children}</ProfileContext.Provider>

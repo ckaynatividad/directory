@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
+import { useUser } from '../context/UserContext';
 
 export default function ProfileForm({
   name,
   setName,
-  email,
   birthday,
   setBirthday,
   bio,
   setBio,
   handleSubmit,
 }) {
+  const { user } = useUser();
   return (
     <form>
       <label> name </label>
@@ -20,7 +21,7 @@ export default function ProfileForm({
         onChange={(e) => setName(e.target.value)}
       />
       <label>email</label>
-      <input type="email" name="email" value={email} readOnly />
+      <input type="email" name="email" value={user.email} readOnly />
       <label> date</label>
       <input
         type="date"

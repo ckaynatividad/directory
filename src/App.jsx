@@ -37,6 +37,7 @@ export default function App() {
                 <ProfileEdit />
               </PrivateRoute>
               <PrivateRoute exact path="/profile/create">
+                <Header />
                 <ProfileCreate />
               </PrivateRoute>
             </Switch>

@@ -17,12 +17,12 @@ export default function Login({ setUser }) {
       let resp;
       if (type === 'Login') {
         resp = await signInUser(email, password);
+        window.location.replace('/profile');
         console.log('logging in');
-        history.replace('/profile');
-        window.location.reload();
-      } else {
-        resp = await signUpUser(email, password);
-        setUser(resp);
+      }
+      if (type === 'Sign Up') {
+        await signUpUser(email, password);
+        console.log('signing-up');
         history.push('/confirm-email');
       }
     } catch {
