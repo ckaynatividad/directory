@@ -1,22 +1,43 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
+import Header from './components/Header';
 import PrivateRoute from './components/PrivateRoute';
+import Profile from './components/Profile';
+import ProfileForm from './components/ProfileForm';
+import { ProfileProvider } from './context/ProfileContext';
+import { UserProvider } from './context/UserContext';
+import Confirm from './views/Confirm';
 import Home from './views/Home';
 import Login from './views/Login';
+import ProfileView from './views/ProfileView';
+
 export default function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/login">
-            <Login setUser={setUser} />
-          </Route>
-          <PrivateRoute path="/profile"></PrivateRoute>
-        </Switch>
-      </BrowserRouter>
+      <UserProvider>
+        <ProfileProvider>
+          <BrowserRouter>
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route exact path="/login">
+                <Login />
+              </Route>
+              <Route exact path="/confirm-email">
+                <Confirm />
+              </Route>
+              <PrivateRoute exact path="/profile">
+                <Header />
+                <ProfileView />
+              </PrivateRoute>
+              <PrivateRoute exact path="/profile/edit">
+                <p>meow</p>
+              </PrivateRoute>
+            </Switch>
+          </BrowserRouter>
+        </ProfileProvider>
+      </UserProvider>
     </div>
   );
 }
