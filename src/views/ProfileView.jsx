@@ -8,8 +8,10 @@ import { getProfile } from '../services/profiles';
 
 export default function ProfileView() {
   const { profile, loading } = useProfile();
-  console.log(profile.name);
-
+  console.log('view', profile);
+  if (!loading && !profile.name) {
+    return <Redirect to="/profile/create" />;
+  }
   return (
     <div>
       Profile

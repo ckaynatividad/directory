@@ -13,15 +13,13 @@ export default function ProfileCreate() {
   const [birthday, setBirthday] = useState('');
   const [bio, setBio] = useState('');
   const history = useHistory();
-  const test = getProfile();
-  console.log(test);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await createProfile({ name, email, bio, birthday });
       alert('Profile created');
-      <Redirect to="/profile" />;
+      history.push('/profile');
     } catch {
       alert('try again');
     }
