@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import ProfileForm2 from '../components/EditProfile';
 import ProfileForm from '../components/ProfileForm';
 import { ProfileProvider, useProfile } from '../context/ProfileContext';
 import { useUser } from '../context/UserContext';
-import { createProfile, getProfile, updateProfile } from '../services/profiles';
+import { createProfile, getProfile } from '../services/profiles';
 
-export default function ProfileEdit() {
+export default function ProfileCreate() {
   const [name, setName] = useState('');
   const {
     user: { email },
@@ -14,21 +13,25 @@ export default function ProfileEdit() {
   const [birthday, setBirthday] = useState('');
   const [bio, setBio] = useState('');
   const history = useHistory();
+  const test = getProfile();
+  console.log(test);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await updateProfile({ name, email, bio, birthday });
-      alert('Profile updated');
+      await createProfile({ name, email, bio, birthday });
+      alert('Profile created');
+
       history.push('/profile');
     } catch {
-      alert('oops');
+      alert('try again');
     }
   };
 
   return (
     <div>
-      <ProfileForm2
+      <h1>you must create a profile!</h1>
+      <ProfileForm
         name={name}
         setName={setName}
         email={email}

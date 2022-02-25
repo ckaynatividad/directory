@@ -6,17 +6,14 @@ import { getProfile } from '../services/profiles';
 export const ProfileContext = createContext();
 
 export function ProfileProvider({ children }) {
-  const currentProfile = getProfile();
-  const [profile, setProfile] = useState(
-    currentProfile
-      ? {
-          name: currentProfile.name,
-          email: currentProfile.email,
-          birthday: currentProfile.birthday,
-          bio: currentProfile.bio,
-        }
-      : {}
-  );
+  const [profile, setProfile] = useState({});
+
+  useEffect(() => {
+    const fetchData = () => {
+      getProfile().then((data) => setProfile(data));
+    };
+    fetchData();
+  }, []);
 
   const value = useMemo(() => ({ profile, setProfile }), [profile]);
 

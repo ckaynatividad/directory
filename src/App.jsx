@@ -4,11 +4,12 @@ import Header from './components/Header';
 import PrivateRoute from './components/PrivateRoute';
 import Profile from './components/Profile';
 import ProfileForm from './components/ProfileForm';
-import { ProfileProvider } from './context/ProfileContext';
+import { ProfileContext, ProfileProvider } from './context/ProfileContext';
 import { UserProvider } from './context/UserContext';
 import Confirm from './views/Confirm';
 import Home from './views/Home';
 import Login from './views/Login';
+import ProfileCreate from './views/ProfileCreate';
 import ProfileEdit from './views/ProfileEdit';
 import ProfileView from './views/ProfileView';
 
@@ -34,6 +35,9 @@ export default function App() {
               </PrivateRoute>
               <PrivateRoute exact path="/profile/edit">
                 <ProfileEdit />
+              </PrivateRoute>
+              <PrivateRoute exact path="/profile/create">
+                <ProfileCreate />
               </PrivateRoute>
             </Switch>
           </BrowserRouter>
