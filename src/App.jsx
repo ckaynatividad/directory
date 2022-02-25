@@ -9,6 +9,7 @@ import { UserProvider } from './context/UserContext';
 import Confirm from './views/Confirm';
 import Home from './views/Home';
 import Login from './views/Login';
+import ProfileEdit from './views/ProfileEdit';
 import ProfileView from './views/ProfileView';
 
 export default function App() {
@@ -32,7 +33,7 @@ export default function App() {
                 <ProfileView />
               </PrivateRoute>
               <PrivateRoute exact path="/profile/edit">
-                <p>meow</p>
+                <ProfileEdit />
               </PrivateRoute>
             </Switch>
           </BrowserRouter>

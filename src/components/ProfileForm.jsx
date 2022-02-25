@@ -1,29 +1,35 @@
 import React, { useState } from 'react';
 
-export default function ProfileForm() {
-  const [name, setName] = useState('');
-  const [birthday, setBirthday] = useState('');
-  const [bio, setBio] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const data = new FormData(e.target);
-  };
+export default function ProfileForm({
+  name,
+  setName,
+  email,
+  birthday,
+  setBirthday,
+  bio,
+  setBio,
+  handleSubmit,
+}) {
   return (
     <form>
+      <label> name </label>
       <input
         type="text"
         name="name"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
+      <label>email</label>
+      <input type="email" name="email" value={email} readOnly />
+      <label> date</label>
       <input
         type="date"
         name="birthday"
         value={birthday}
         onChange={(e) => setBirthday(e.target.value)}
       />
-      <input
+      <label>bio</label>
+      <textarea
         type="text"
         name="bio"
         value={bio}

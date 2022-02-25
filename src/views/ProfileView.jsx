@@ -21,7 +21,6 @@ export default function ProfileView() {
   return (
     <div>
       <p>helllo</p>
-      {!profile ? <p>nugget</p> : null}
     </div>
   );
 }

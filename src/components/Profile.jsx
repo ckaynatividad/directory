@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-export default function Profile(profile) {
+export default function Profile(props) {
   const history = useHistory();
 
   const handleSubmit = () => {
@@ -10,10 +10,10 @@ export default function Profile(profile) {
   return (
     <div>
       Profile <button onClick={handleSubmit}>edit</button>
-      <p>Name: {profile.name}</p>
-      <p>Email: {profile.email}</p>
-      <p>Birthday: {profile.birthday}</p>
-      <p>Bio: {profile.bio}</p>
+      <p>Name: {props.name}</p>
+      <p>Email: {props.email}</p>
+      <p>Birthday: {props.birthday}</p>
+      <p>Bio: {props.bio}</p>
     </div>
   );
 }

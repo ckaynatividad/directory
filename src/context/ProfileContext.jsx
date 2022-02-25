@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useMemo, useState } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
 import { useContext } from 'react/cjs/react.development';
 import { getProfile } from '../services/profiles';
@@ -6,21 +6,19 @@ import { getProfile } from '../services/profiles';
 export const ProfileContext = createContext();
 
 export function ProfileProvider({ children }) {
-  const [profile, setProfile] = useState({});
+  const currentProfile = getProfile();
+  const [profile, setProfile] = useState(
+    currentProfile
+      ? {
+          name: currentProfile.name,
+          email: currentProfile.email,
+          birthday: currentProfile.birthday,
+          bio: currentProfile.bio,
+        }
+      : {}
+  );
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const resp = await getProfile();
-        setProfile(resp);
-      } catch {
-        <Redirect to="/profile/edit" />;
-      }
-    };
-    fetchData();
-  }, []);
-
-  const value = { profile, setProfile };
+  const value = useMemo(() => ({ profile, setProfile }), [profile]);
 
   return (
     <ProfileContext.Provider value={value}>{children}</ProfileContext.Provider>

@@ -7,9 +7,7 @@ import { UserProvider } from './context/UserContext';
 render(
   <React.StrictMode>
     <UserProvider>
-      <ProfileProvider>
-        <App />
-      </ProfileProvider>
+      <App />
     </UserProvider>
   </React.StrictMode>,
   document.getElementById('root')
