@@ -1,14 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
 import App from './App';
-import { ProfileProvider } from './context/ProfileContext';
+import { ProfileProvider } from './hooks/useProfile';
 import { UserProvider } from './context/UserContext';
 
 render(
   <React.StrictMode>
-    <UserProvider>
-      <App />
-    </UserProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

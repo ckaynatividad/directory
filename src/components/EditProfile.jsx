@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { useProfile } from '../context/ProfileContext';
-import { getProfile } from '../services/profiles';
 
 export default function ProfileForm2({
   name,

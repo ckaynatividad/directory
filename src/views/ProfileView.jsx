@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, Redirect, useHistory } from 'react-router-dom';
 
 import Profile from '../components/Profile';
-import { useProfile } from '../context/ProfileContext';
+import { useProfile } from '../hooks/useProfile';
 import { useUser } from '../context/UserContext';
 import { getProfile } from '../services/profiles';
 

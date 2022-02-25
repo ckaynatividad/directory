@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`login works 1`] = `
+<div>
+  <div>
+    <h1>
+      Login
+    </h1>
+    <div>
+      <form>
+        <label>
+          Email:
+          <input
+            type="email"
+            value=""
+          />
+        </label>
+        <label>
+          Password:
+          <input
+            type="password"
+            value=""
+          />
+        </label>
+        <p />
+        <input
+          type="submit"
+        />
+      </form>
+    </div>
+    <button
+      class=""
+    >
+      Sign Up
+    </button>
+  </div>
+</div>
+`;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import ProfileForm2 from '../components/EditProfile';
 import ProfileForm from '../components/ProfileForm';
-import { ProfileProvider, useProfile } from '../context/ProfileContext';
+import { useProfile } from '../hooks/useProfile';
 import { useUser } from '../context/UserContext';
 import { createProfile, getProfile, updateProfile } from '../services/profiles';
 
